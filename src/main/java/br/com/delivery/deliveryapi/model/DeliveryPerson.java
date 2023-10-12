@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,9 +17,11 @@ import java.util.UUID;
 @Setter
 @Entity
 public class DeliveryPerson extends User {
-  @CPF private String cpf;
-  private List<Float> rating;
+    @CPF
+    private String cpf;
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "deliveryPerson")
-  private List<Order> orders;
+    private List<BigDecimal> rating = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "deliveryPerson")
+    private List<Order> orders = new ArrayList<>();
 }

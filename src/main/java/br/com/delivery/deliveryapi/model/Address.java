@@ -16,18 +16,19 @@ import java.util.UUID;
 @Entity
 public class Address {
 
-  @Id private UUID id;
-  private String streetAddress;
-  private String area;
-  private String complement;
-  private String cep;
-  private String city;
-  private String state;
+    @Id
+    private UUID id;
+    private String streetAddress;
+    private String area;
+    private String complement;
+    private String cep;
+    private String city;
+    private String state;
 
-  @Enumerated(EnumType.STRING)
-  private AddressType adressType;
+    @Enumerated(EnumType.STRING)
+    private AddressType adressType;
 
-  @ManyToOne
-  @JoinColumn(name = "user_id", nullable = false)
-  private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }

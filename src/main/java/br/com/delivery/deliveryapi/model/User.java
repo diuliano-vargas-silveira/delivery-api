@@ -16,17 +16,17 @@ import java.util.UUID;
 @Entity(name = "users")
 public class User {
 
-  @Id
-  @GeneratedValue(generator = "UUID")
-  private UUID id;
+    @Id
+    @GeneratedValue(generator = "UUID")
+    private UUID id;
 
-  private String name;
+    private String name;
 
-  @Column(unique = true)
-  private String login;
+    @Column(unique = true)
+    private String login;
 
-  private String password;
+    private String password;
 
-  @Enumerated(EnumType.STRING)
-  private Role role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }

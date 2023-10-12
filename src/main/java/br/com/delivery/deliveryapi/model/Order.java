@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,29 +17,30 @@ import java.util.UUID;
 @Setter
 @Entity(name = "orders")
 public class Order {
-  @Id
-  @GeneratedValue(generator = "UUID")
-  private UUID id;
 
-  @ManyToMany
-  @JoinTable(
-      name = "product_order",
-      joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
-      inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"))
-  private List<Product> products;
+    @Id
+    @GeneratedValue(generator = "UUID")
+    private UUID id;
 
-  @ManyToOne
-  @JoinColumn(name = "restaurant_id", nullable = false)
-  private Restaurant restaurant;
+    @ManyToMany
+    @JoinTable(
+            name = "product_order",
+            joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"))
+    private List<Product> products = new ArrayList<>();
 
-  @ManyToOne
-  @JoinColumn(name = "delivery_person_id")
-  private DeliveryPerson deliveryPerson;
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id", nullable = false)
+    private Restaurant restaurant;
 
-  @ManyToOne
-  @JoinColumn(name = "customer_id", nullable = false)
-  private Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "delivery_person_id")
+    private DeliveryPerson deliveryPerson;
 
-  @Enumerated(EnumType.STRING)
-  private OrderStatus status;
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
 }
