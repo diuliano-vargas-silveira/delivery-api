@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -15,21 +14,19 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-public class Product {
+public class DeliveryPersonEvaluation {
 
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
-    private String name;
-    private BigDecimal price;
-
-    @CollectionTable
-    private List<String> categories;
-
-    @ManyToMany(mappedBy = "products")
-    private List<Order> orders;
 
     @ManyToOne
-    @JoinColumn(name = "restaurant_id", nullable = false)
-    private Restaurant restaurant;
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "deliveryPerson_id", nullable = false)
+    private DeliveryPerson deliveryPerson;
+
+    private BigDecimal rating;
 }

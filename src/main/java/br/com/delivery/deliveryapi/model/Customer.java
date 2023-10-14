@@ -16,11 +16,12 @@ import java.util.List;
 @Entity
 public class Customer extends User {
 
-  @CPF private String cpf;
+    @CPF
+    private String cpf;
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
-  private List<Order> orders;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
+    private List<Order> orders;
 
-  @OneToMany(cascade=CascadeType.ALL, mappedBy="user")
-  private List<Address> addresses;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
+    private List<Address> addresses;
 }

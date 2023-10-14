@@ -2,31 +2,29 @@ package br.com.delivery.deliveryapi.model;
 
 import br.com.delivery.deliveryapi.enums.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity(name = "users")
-public class User {
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class User {
 
-  @Id
-  @GeneratedValue(generator = "UUID")
-  private UUID id;
+    @Id
+    @GeneratedValue(generator = "UUID")
+    private UUID id;
 
-  private String name;
+    private String name;
 
-  @Column(unique = true)
-  private String login;
+    @Column(unique = true)
+    private String login;
 
-  private String password;
+    private String password;
 
-  @Enumerated(EnumType.STRING)
-  private Role role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Address> addresses = new ArrayList<>();
 }
