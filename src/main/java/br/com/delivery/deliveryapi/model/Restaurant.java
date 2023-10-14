@@ -3,9 +3,17 @@ package br.com.delivery.deliveryapi.model;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 public class Restaurant extends User {
 
@@ -22,6 +30,6 @@ public class Restaurant extends User {
 
     private String phoneNumber;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "restaurant")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "restaurant")
     private List<RestaurantEvaluation> evaluations;
 }
