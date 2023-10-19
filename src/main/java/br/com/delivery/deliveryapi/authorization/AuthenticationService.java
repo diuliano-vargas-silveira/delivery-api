@@ -8,6 +8,7 @@ import br.com.delivery.deliveryapi.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -40,10 +41,12 @@ public class AuthenticationService {
 
     public AuthenticationReponse authenticate(AuthenticationRequest authenticationRequest) {
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(authenticationRequest.login(), authenticationRequest.password() )
+                new UsernamePasswordAuthenticationToken(authenticationRequest.login(), authenticationRequest.password())
         );
 
-        var user = repository.findByLogin(authenticationRequest.login()).orElseThrow();
+        var user = repository.findByLogin(authenticationRequest.login())
+                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado."));
+
         var jwtToken = jwtService.generateToken(user);
 
         return new AuthenticationReponse(jwtToken);
