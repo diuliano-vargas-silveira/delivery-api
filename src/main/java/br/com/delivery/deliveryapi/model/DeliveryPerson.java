@@ -16,7 +16,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class DeliveryPerson extends User {
+public class DeliveryPerson extends Users {
 
     @CPF
     private String cpf;

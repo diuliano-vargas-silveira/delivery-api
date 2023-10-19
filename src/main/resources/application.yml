@@ -8,6 +8,8 @@ logging:
     org.springframework.web.socket: DEBUG
     org.springframework.messaging: DEBUG
 
+env: 2a6c6b2e2d3b7c58412e2f392c2a2b595a296d5829514c5d3073643e4a
+
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/development
@@ -15,7 +17,8 @@ spring:
     password: postgres
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: true
     database: postgresql
     database-platform: "org.hibernate.dialect.PostgreSQLDialect"
+
