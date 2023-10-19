@@ -15,7 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Restaurant extends User {
+public class Restaurant extends Users {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "restaurant")
     private List<Product> products;
