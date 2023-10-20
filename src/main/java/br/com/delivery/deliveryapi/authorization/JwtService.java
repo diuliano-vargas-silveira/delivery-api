@@ -20,7 +20,8 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-    private static final String KEY = "";
+    @Value("${env.secrets.jwt-token}")
+    private String KEY;
     private static final long EXPIRATION_DATE_SUM = 1000 * 60 * 24 * 30;
 
     public String extractLogin(String token) {
