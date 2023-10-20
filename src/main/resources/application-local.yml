@@ -1,7 +1,0 @@
-spring:
-  config:
-    activate:
-      on-profile: local
-env:
-  secrets:
-    jwt-token: NPKVADNKPVADNKPVANKPVADNKPVADNKPVADNKPVDNAPKVDAVA
