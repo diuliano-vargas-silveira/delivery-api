@@ -3,6 +3,7 @@ package br.com.delivery.deliveryapi.authorization;
 import br.com.delivery.deliveryapi.dto.AuthenticationReponse;
 import br.com.delivery.deliveryapi.dto.AuthenticationRequest;
 import br.com.delivery.deliveryapi.dto.UserRegisterRequest;
+import br.com.delivery.deliveryapi.mappers.AuthenticationMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,9 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationReponse> register(@RequestBody UserRegisterRequest request) {
-        return ResponseEntity.ok(service.register(request));
+        var user = AuthenticationMapper.userRegisterRequestToUsers(request);
+
+        return ResponseEntity.ok(service.register(user));
     }
 
     @PostMapping("/authenticate")

@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.br.CPF;
 
 import java.util.List;
 
@@ -17,9 +16,6 @@ import java.util.List;
 @Setter
 @Entity
 public class DeliveryPerson extends Users {
-
-    @CPF
-    private String cpf;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "deliveryPerson")
     private List<DeliveryPersonEvaluation> rating;

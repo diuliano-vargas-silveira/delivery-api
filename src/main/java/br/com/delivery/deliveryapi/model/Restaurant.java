@@ -3,10 +3,7 @@ package br.com.delivery.deliveryapi.model;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -27,8 +24,6 @@ public class Restaurant extends Users {
     private List<Address> addresses;
 
     private String profilePhoto;
-
-    private String phoneNumber;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "restaurant")
     private List<RestaurantEvaluation> evaluations;
