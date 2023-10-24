@@ -1,4 +1,4 @@
-package br.com.delivery.deliveryapi.authorization;
+package br.com.delivery.deliveryapi.config;
 
 import br.com.delivery.deliveryapi.config.JwtAuthenticationFilter;
 import br.com.delivery.deliveryapi.enums.Role;
@@ -27,7 +27,7 @@ public class SecurityConfig {
                 .csrf((AbstractHttpConfigurer::disable))
                 .authorizeHttpRequests(authorize -> {
                     authorize.requestMatchers("/api/authorization/**").permitAll();
-                    authorize.requestMatchers("/user").hasAuthority(Role.DELIVERY_PERSON.name());
+                    authorize.requestMatchers("/restaurant/product").hasAuthority(Role.RESTAURANT.name());
                     authorize.anyRequest().authenticated();
                 }).sessionManagement(session -> {
                     session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);

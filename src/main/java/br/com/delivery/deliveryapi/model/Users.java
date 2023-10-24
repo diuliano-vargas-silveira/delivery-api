@@ -47,7 +47,7 @@ public class Users implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Address> addresses;
 
     @Override
