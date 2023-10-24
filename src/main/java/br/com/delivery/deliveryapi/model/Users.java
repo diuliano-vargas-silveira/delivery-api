@@ -3,6 +3,8 @@ package br.com.delivery.deliveryapi.model;
 import br.com.delivery.deliveryapi.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.validator.constraints.br.CNPJ;
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,11 +34,21 @@ public class Users implements UserDetails {
 
     private String password;
 
+    @CPF
+    @CNPJ(groups = {Restaurant.class, DeliveryPerson.class})
+    @Column(unique = true)
+    private String document;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Order> orders;
+
+    private String phoneNumber;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
     @OneToMany(mappedBy = "user")
-    private List<Address> addresses = new ArrayList<>();
+    private List<Address> addresses;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
