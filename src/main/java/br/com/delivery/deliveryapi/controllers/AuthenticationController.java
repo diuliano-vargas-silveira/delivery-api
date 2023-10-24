@@ -1,5 +1,6 @@
-package br.com.delivery.deliveryapi.authorization;
+package br.com.delivery.deliveryapi.controllers;
 
+import br.com.delivery.deliveryapi.authorization.AuthenticationService;
 import br.com.delivery.deliveryapi.dto.AuthenticationReponse;
 import br.com.delivery.deliveryapi.dto.AuthenticationRequest;
 import br.com.delivery.deliveryapi.dto.UserRegisterRequest;

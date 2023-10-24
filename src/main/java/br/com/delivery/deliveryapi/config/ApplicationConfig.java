@@ -1,4 +1,4 @@
-package br.com.delivery.deliveryapi.authorization;
+package br.com.delivery.deliveryapi.config;
 
 import br.com.delivery.deliveryapi.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;

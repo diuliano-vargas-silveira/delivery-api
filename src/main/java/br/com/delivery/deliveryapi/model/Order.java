@@ -33,13 +33,9 @@ public class Order {
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
 
-    @ManyToMany
-    @JoinTable(
-            name = "product_order",
-            joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"))
-    private List<Product> products;
-
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
+    private List<ProductOrder> productOrders;
 }
