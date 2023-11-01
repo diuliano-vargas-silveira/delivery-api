@@ -2,7 +2,6 @@ package br.com.delivery.deliveryapi.repositories;
 
 import br.com.delivery.deliveryapi.enums.Role;
 import br.com.delivery.deliveryapi.model.Users;
-import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -20,7 +19,7 @@ class UserRepositoryTest {
     private UserRepository userRepository;
 
     @Test
-    void itShouldFindByLoginAnUserIfExistAnUserWithThatCredentials() {
+    void itShouldFindByLoginAnUserIfExistAnUserWithHisCredentials() {
         String email = "rosemariedas@email.com";
 
         Users user = Users.builder()
@@ -42,5 +41,14 @@ class UserRepositoryTest {
         var userLogin = userRepositoryByLogin.get();
 
         assertThat(userLogin.getLogin()).isEqualTo(user.getLogin());
+    }
+
+    @Test
+    void itShouldNotFindByLoginAnUserAndReturnNull() {
+        String email = "userdoesntexist@email.com";
+
+        Optional<Users> users = userRepository.findByLogin(email);
+
+        assertThat(users.isPresent()).isFalse();
     }
 }
