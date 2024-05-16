@@ -16,7 +16,7 @@ public class ProductMapper {
                 .price(createProductRequest.price())
                 .productOrders(new ArrayList<>())
                 .restaurant(null)
-                .categories(createProductRequest.categories())
+                .categories(new ArrayList<>()) // FIXME: change logic after
                 .photo(createProductRequest.photo())
                 .build();
     }

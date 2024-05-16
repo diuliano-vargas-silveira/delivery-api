@@ -21,8 +21,8 @@ public class Product {
     private String photo;
     private BigDecimal price;
 
-    @CollectionTable
-    private List<String> categories;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private List<ProductCategory> categories;
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id", nullable = false)
