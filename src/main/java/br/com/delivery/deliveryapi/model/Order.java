@@ -1,6 +1,5 @@
 package br.com.delivery.deliveryapi.model;
 
-import br.com.delivery.deliveryapi.enums.OrderStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,8 +31,9 @@ public class Order {
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
 
-    @Enumerated(EnumType.STRING)
-    private OrderStatus status;
+    @ManyToOne
+    @JoinColumn(name = "order_status_id", referencedColumnName = "id")
+    private OrderStatus orderStatus;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
     private List<ProductOrder> productOrders;
