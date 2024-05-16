@@ -21,8 +21,8 @@ public class RestaurantEvaluation {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private Users user;
+    @JoinColumn(name = "clientPerson_id", nullable = false)
+    private ClientPerson clientPerson;
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id", nullable = false)

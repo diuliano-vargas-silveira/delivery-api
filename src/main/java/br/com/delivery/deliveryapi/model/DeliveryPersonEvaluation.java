@@ -20,10 +20,6 @@ public class DeliveryPersonEvaluation {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private Users user;
-
-    @ManyToOne
     @JoinColumn(name = "deliveryPerson_id", nullable = false)
     private DeliveryPerson deliveryPerson;
 
