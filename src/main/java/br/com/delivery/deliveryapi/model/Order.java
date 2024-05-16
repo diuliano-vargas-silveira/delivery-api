@@ -21,8 +21,8 @@ public class Order {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private Users user;
+    @JoinColumn(name = "clientPersonId", nullable = false)
+    private ClientPerson clientPerson;
 
     @ManyToOne
     @JoinColumn(name = "deliveryPerson_id", nullable = false)

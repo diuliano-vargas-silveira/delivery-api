@@ -37,9 +37,6 @@ public class Users implements UserDetails {
     @Column(unique = true)
     private String document;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Order> orders;
-
     private String phoneNumber;
 
     @Enumerated(EnumType.STRING)

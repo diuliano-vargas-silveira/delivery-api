@@ -13,7 +13,7 @@ public class UserMapper {
 
         restaurant.setId(user.getId());
         restaurant.setAddresses(new ArrayList<>());
-        restaurant.setOrders(user.getOrders());
+        restaurant.setOrders(new ArrayList<>());
         restaurant.setProducts(new ArrayList<>());
         restaurant.setDocument(user.getDocument());
         restaurant.setName(user.getName());
