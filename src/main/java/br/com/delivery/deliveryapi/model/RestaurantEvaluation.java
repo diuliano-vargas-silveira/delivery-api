@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.UUID;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,12 +17,12 @@ import java.util.UUID;
 public class RestaurantEvaluation {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private Users user;
+    @JoinColumn(name = "clientPerson_id", nullable = false)
+    private ClientPerson clientPerson;
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id", nullable = false)

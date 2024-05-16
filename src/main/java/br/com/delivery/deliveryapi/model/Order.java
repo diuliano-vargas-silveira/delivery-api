@@ -1,14 +1,13 @@
 package br.com.delivery.deliveryapi.model;
 
-import br.com.delivery.deliveryapi.enums.OrderStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,12 +17,12 @@ import java.util.UUID;
 public class Order {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private Users user;
+    @JoinColumn(name = "clientPersonId", nullable = false)
+    private ClientPerson clientPerson;
 
     @ManyToOne
     @JoinColumn(name = "deliveryPerson_id", nullable = false)
@@ -33,9 +32,12 @@ public class Order {
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
 
-    @Enumerated(EnumType.STRING)
-    private OrderStatus status;
+    @ManyToOne
+    @JoinColumn(name = "order_status_id", referencedColumnName = "id")
+    private OrderStatus orderStatus;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
     private List<ProductOrder> productOrders;
+
+    private LocalDateTime CreatedAt = LocalDateTime.now();
 }

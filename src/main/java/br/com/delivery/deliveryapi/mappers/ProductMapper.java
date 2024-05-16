@@ -11,12 +11,12 @@ public class ProductMapper {
     public static Product createProductRequestToProduct(CreateProductRequest createProductRequest) {
         return Product
                 .builder()
-                .id(UUID.randomUUID())
+                .id(1L) // FIXME: change this later to map a real id
                 .name(createProductRequest.name())
                 .price(createProductRequest.price())
                 .productOrders(new ArrayList<>())
                 .restaurant(null)
-                .categories(createProductRequest.categories())
+                .categories(new ArrayList<>()) // FIXME: change logic after
                 .photo(createProductRequest.photo())
                 .build();
     }

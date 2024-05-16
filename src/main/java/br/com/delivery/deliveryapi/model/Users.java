@@ -9,10 +9,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,8 +22,8 @@ import java.util.UUID;
 public class Users implements UserDetails {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    private Long id;
 
     private String name;
 
@@ -38,9 +36,6 @@ public class Users implements UserDetails {
     @CNPJ(groups = {Restaurant.class, DeliveryPerson.class})
     @Column(unique = true)
     private String document;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Order> orders;
 
     private String phoneNumber;
 

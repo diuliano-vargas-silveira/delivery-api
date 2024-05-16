@@ -5,7 +5,6 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,14 +15,14 @@ import java.util.UUID;
 public class Product {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String photo;
     private BigDecimal price;
 
-    @CollectionTable
-    private List<String> categories;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private List<ProductCategory> categories;
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id", nullable = false)

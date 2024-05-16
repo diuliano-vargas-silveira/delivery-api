@@ -1,6 +1,7 @@
 package br.com.delivery.deliveryapi.mappers;
 
 import br.com.delivery.deliveryapi.dto.UserRegisterRequest;
+import br.com.delivery.deliveryapi.model.Order;
 import br.com.delivery.deliveryapi.model.Users;
 
 import java.util.ArrayList;
@@ -10,10 +11,9 @@ public class AuthenticationMapper {
 
     public static Users userRegisterRequestToUsers(UserRegisterRequest userRegisterRequest) {
         return Users.builder()
-                .id(UUID.randomUUID())
+                .id(1L) // FIXME: change this later to map a real id
                 .name(userRegisterRequest.name())
                 .addresses(new ArrayList<>())
-                .orders(new ArrayList<>())
                 .phoneNumber(userRegisterRequest.phoneNumber())
                 .document(userRegisterRequest.document())
                 .login(userRegisterRequest.login())
