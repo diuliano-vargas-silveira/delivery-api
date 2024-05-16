@@ -10,7 +10,7 @@ public class AuthenticationMapper {
 
     public static Users userRegisterRequestToUsers(UserRegisterRequest userRegisterRequest) {
         return Users.builder()
-                .id(UUID.randomUUID())
+                .id(1L) // FIXME: change this later to map a real id
                 .name(userRegisterRequest.name())
                 .addresses(new ArrayList<>())
                 .orders(new ArrayList<>())

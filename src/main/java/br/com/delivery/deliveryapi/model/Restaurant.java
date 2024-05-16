@@ -1,8 +1,6 @@
 package br.com.delivery.deliveryapi.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
@@ -13,6 +11,9 @@ import java.util.List;
 @Setter
 @Entity
 public class Restaurant extends Users {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "restaurant")
     private List<Product> products;
