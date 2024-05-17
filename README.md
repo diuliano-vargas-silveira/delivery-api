@@ -1,17 +1,21 @@
 # delivery-api
 
+## Task List
 
-To-Do List (Features)
-Ordering Functionality
+- [ ] **List Restaurants**
 
-List restaurants [-]
-List foods [-]
-Filter foods by category or criteria [-]
-Filter restaurants by location or cuisine [-]
-List available food additionals [-]
-Create an order with selected food items and quantities [-]
-Choose cash as payment method [-]
-Submit and confirm order [-]
-Additional Features (On Hold)
+- [ ] **Filter Restaurants**
 
-Track order progress (future implementation) [-]
+- [ ] **List Foods**
+
+- [ ] **Filter Foods**
+
+- [ ] **List Food Additionals**
+
+- [ ] **Make Order**
+
+- [ ] **Choose Payment Method (Cash)**
+
+- [ ] **Complete Order**
+
+- [ ] **Follow Order Track (Not Now)**
