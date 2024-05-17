@@ -11,7 +11,6 @@ public class ProductMapper {
     public static Product createProductRequestToProduct(CreateProductRequest createProductRequest) {
         return Product
                 .builder()
-                .id(1L) // FIXME: change this later to map a real id
                 .name(createProductRequest.name())
                 .price(createProductRequest.price())
                 .productOrders(new ArrayList<>())
