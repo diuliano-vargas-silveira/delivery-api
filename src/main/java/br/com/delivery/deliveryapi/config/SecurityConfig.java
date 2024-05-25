@@ -1,6 +1,5 @@
 package br.com.delivery.deliveryapi.config;
 
-import br.com.delivery.deliveryapi.config.JwtAuthenticationFilter;
 import br.com.delivery.deliveryapi.enums.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -8,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
@@ -27,12 +25,15 @@ public class SecurityConfig {
         security
                 .csrf((AbstractHttpConfigurer::disable))
                 .authorizeHttpRequests(authorize -> {
-                    authorize.requestMatchers("/api/authorization/**", "/", "/api-docs","/api-docs/**","/swagger-resources/**","/swagger-ui/**").permitAll();
+                    authorize.requestMatchers("/api/authorization/**", "/", "/api-docs", "/api-docs/**",
+                            "/swagger-resources/**", "/swagger-ui/**").permitAll();
+                    authorize.requestMatchers("/products/most-sold").hasAuthority(Role.CUSTOMER.name());
                     authorize.requestMatchers("/restaurant/product").hasAuthority(Role.RESTAURANT.name());
                     authorize.anyRequest().authenticated();
                 }).sessionManagement(session -> {
                     session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-                }).authenticationProvider(authenticationProvider).addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                }).authenticationProvider(authenticationProvider)
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return security.build();
     }
