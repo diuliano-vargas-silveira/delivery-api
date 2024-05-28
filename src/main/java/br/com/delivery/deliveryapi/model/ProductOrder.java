@@ -1,5 +1,8 @@
 package br.com.delivery.deliveryapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,6 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity(name = "product_order")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class ProductOrder {
 
     @Id

@@ -9,11 +9,15 @@ logging:
     org.springframework.messaging: DEBUG
 
 spring:
+  sql:
+    init:
+      mode: always
   datasource:
     url: jdbc:postgresql://localhost:5432/development
     username: postgres
     password: postgres
   jpa:
+    defer-datasource-initialization: true
     hibernate:
       ddl-auto: create-drop
     show-sql: true
